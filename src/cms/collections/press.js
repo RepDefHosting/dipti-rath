@@ -1,0 +1,85 @@
+const pressFields = [
+  {
+    label: 'Template Key',
+    name: 'templateKey',
+    widget: 'hidden',
+    default: 'press-post',
+  },
+  {
+    label: 'Published',
+    name: 'published',
+    widget: 'boolean',
+    default: true,
+    required: false,
+  },
+  {
+    label: 'Publication',
+    name: 'publication',
+    widget: 'string',
+    required: true,
+    hint: 'Name of the publication, e.g. "Forbes", "The New York Times"',
+  },
+  {
+    label: 'Headline',
+    name: 'headline',
+    widget: 'string',
+    required: true,
+    hint: 'The article headline as it appeared in the publication',
+  },
+  {
+    label: 'Article URL',
+    name: 'url',
+    widget: 'string',
+    required: true,
+    hint: 'Link to the article. Must start with "https://".',
+    pattern: ['https://.+', 'Must start with "https://"'],
+  },
+  {
+    label: 'Date',
+    name: 'date',
+    widget: 'datetime',
+    required: true,
+    hint: 'Date of publication (used for sort order)',
+  },
+  {
+    label: 'Show on Homepage',
+    name: 'featured',
+    widget: 'boolean',
+    default: true,
+    required: false,
+    hint: 'If enabled, this item appears in the homepage press strip.',
+  },
+  {
+    label: 'Publication Logo',
+    name: 'logo',
+    widget: 'object',
+    required: false,
+    hint: 'Optional publication logo image',
+    fields: [
+      {
+        label: 'Logo Image',
+        name: 'src',
+        widget: 'image',
+        required: false,
+      },
+      {
+        label: 'Alt Text',
+        name: 'alt',
+        widget: 'string',
+        required: false,
+        hint: 'Describe the logo for screen readers, e.g. "Forbes logo"',
+      },
+    ],
+  },
+]
+
+export default {
+  name: 'press',
+  label: 'Press Mentions',
+  label_singular: 'Press Mention',
+  folder: 'src/pages/press',
+  create: true,
+  slug: '{{slug}}',
+  identifier_field: 'headline',
+  fields: pressFields,
+}

@@ -1,0 +1,56 @@
+/* =========================================
+   External Properties / SameAs Row
+   ========================================= */
+
+.sec-sameas-row {
+  background-color: var(--clr-paper-dark);
+  border-bottom: 1px solid var(--clr-rule);
+  padding: 2.5rem 0;
+
+  .sameas-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 480px) {
+      padding: 0 1.25rem;
+    }
+  }
+
+  .sameas-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sameas-item {
+    flex-shrink: 0;
+  }
+
+  .sameas-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--clr-ink-muted);
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--clr-rule);
+    border-radius: 2rem;
+    background: var(--clr-paper);
+    transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+
+    &:hover {
+      border-color: var(--clr-accent);
+      color: var(--clr-accent);
+      background-color: var(--clr-paper);
+      text-decoration: none;
+    }
+  }
+}

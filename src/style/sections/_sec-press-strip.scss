@@ -1,0 +1,91 @@
+/* =========================================
+   Press Mentions Strip
+   ========================================= */
+
+.sec-press-strip {
+  background-color: var(--clr-paper);
+  border-bottom: 1px solid var(--clr-rule);
+  padding: 4rem 0;
+
+  @media (max-width: 740px) {
+    padding: 2.75rem 0;
+  }
+
+  .press-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 480px) {
+      padding: 0 1.25rem;
+    }
+  }
+
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .press-item {
+    a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.25rem;
+      border: 1px solid var(--clr-rule);
+      border-radius: 4px;
+      background-color: var(--clr-paper);
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+
+      &:hover {
+        border-color: var(--clr-accent);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .press-logo {
+    height: 32px;
+    max-width: 120px;
+    width: auto;
+    object-fit: contain;
+    object-position: left center;
+    filter: grayscale(0.3) opacity(0.85);
+    transition: filter 0.15s;
+
+    .press-item a:hover & {
+      filter: grayscale(0) opacity(1);
+    }
+  }
+
+  .press-pub {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+  }
+
+  .press-headline {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--clr-ink);
+  }
+
+  .press-date {
+    font-size: 0.78rem;
+    color: var(--clr-ink-faint);
+    margin-top: auto;
+  }
+}

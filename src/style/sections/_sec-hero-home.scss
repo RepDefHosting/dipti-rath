@@ -1,0 +1,128 @@
+/* =========================================
+   Homepage Hero — Contained Portrait Frame
+   ========================================= */
+
+.sec-hero-home {
+  background-color: var(--clr-paper);
+  border-bottom: 1px solid var(--clr-rule);
+  padding: 5rem 0 4rem;
+
+  @media (max-width: 740px) {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    @media (max-width: 900px) {
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 740px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 0 1.25rem;
+    }
+  }
+
+  /* Text column */
+  .hero-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    margin-bottom: 1rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    color: var(--clr-ink);
+    margin: 0 0 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    color: var(--clr-ink-muted);
+    line-height: 1.4;
+    margin: 0 0 0.5rem;
+  }
+
+  .hero-location {
+    font-size: 0.9rem;
+    color: var(--clr-ink-faint);
+    margin: 0 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    &::before {
+      content: '◎';
+      font-size: 0.75rem;
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Portrait column */
+  .hero-portrait {
+    flex-shrink: 0;
+    width: 300px;
+
+    @media (max-width: 900px) {
+      width: 240px;
+    }
+
+    @media (max-width: 740px) {
+      width: 160px;
+    }
+  }
+
+  .portrait-frame {
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--clr-paper-dark);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  /* No-image fallback: hero still looks complete */
+  &.no-portrait .hero-inner {
+    justify-content: flex-start;
+  }
+
+  &.no-portrait .hero-text {
+    max-width: 680px;
+  }
+
+  &.no-portrait .hero-name {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+  }
+}

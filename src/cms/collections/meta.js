@@ -1,0 +1,270 @@
+import { siteMetadata } from '../../../gatsby-config'
+
+const socialLink = (label) => ({
+  label,
+  name: label.toLowerCase(),
+  widget: 'object',
+  fields: [
+    {
+      label: `${label} URL`,
+      name: 'url',
+      widget: 'string',
+      hint: `The URL of your ${label} page, if you have one. Must start with "https://".`,
+      pattern: ['https://.+', 'Must start with "https://"."'],
+      required: false,
+    },
+    {
+      label: `Button Text`,
+      name: 'label',
+      widget: 'string',
+      hint: 'Text to shown on the button in profile page social icons',
+      required: false,
+    },
+    {
+      label: 'Enable',
+      name: 'show',
+      widget: 'boolean',
+      default: true,
+    },
+  ],
+})
+
+const siteDataFields = [
+  {
+    label: 'Template Key',
+    name: 'templateKey',
+    widget: 'hidden',
+    default: 'site-data',
+  },
+  {
+    label: 'Published',
+    name: 'published',
+    widget: 'hidden',
+    default: false,
+  },
+  {
+    label: 'Client Name',
+    name: 'name',
+    widget: 'string',
+    required: true,
+    hint: 'Your full name, e.g. John Smith',
+  },
+  {
+    label: 'Job Title',
+    name: 'jobTitle',
+    widget: 'string',
+    required: true,
+    hint: "Your job title as you'd like it shown next to your name, e.g. CEO of ABC Widget Corp.",
+  },
+  {
+    label: 'Site Name',
+    name: 'siteName',
+    widget: 'string',
+    required: false,
+    hint: 'Used in browser tab titles and SEO meta tags, e.g. "Jennifer Neitzel" or "About Jennifer Neitzel". Defaults to Client Name if left blank.',
+  },
+  {
+    label: 'Location',
+    name: 'location',
+    widget: 'string',
+    required: true,
+    hint: "Your location as you'd like it shown underneath to your name, e.g. San Francisco, California, USA.",
+  },
+  {
+    label: 'Profile Image',
+    name: 'profileImage',
+    widget: 'object',
+    required: false,
+    hint: "The profile image to show before your name",
+    fields: [
+      {
+        label: 'Image File',
+        name: 'src',
+        widget: 'image',
+        required: false,
+      },
+      {
+        label: 'Alt Text',
+        name: 'alt',
+        widget: 'string',
+        hint: "Describe what is shown in the image. This description is very important for SEO, don't leave it blank.",
+        required: false,
+      }
+    ]
+  },
+  {
+    label: 'Site URL',
+    name: 'siteUrl',
+    widget: 'string',
+    required: true,
+    hint: 'The URL of your website. Must start with "https://".',
+    pattern: ['https://.+', 'Must start with "https://"."'],
+  },
+  {
+    label: 'Google Analytics ID',
+    name: 'siteAnalytics',
+    widget: 'string',
+    required: false,
+    hint: 'If you use Google Analytics, insert your ID, e.g. UA-123456789-1',
+  },
+  // {
+  //   label: 'Favicon',
+  //   name: 'favicon',
+  //   widget: 'image',
+  //   hint: 'A square favicon to show in the corner of the browser tab on your site. You can use a free online favicon generator to make one. Upload the verison that is 32x32 in PNG format.',
+  // },
+  // {
+  //   label: 'Default Fallback Image',
+  //   name: 'fallbackImage',
+  //   widget: 'image',
+  //   required: true,
+  //   hint: "The default image that will be used for pages that don't have their own featured image. Your headshot is usually a good choice for this.",
+  // },
+  {
+    label: 'Short Bio',
+    name: 'shortBio',
+    widget: 'text',
+    required: false,
+    hint: '2–3 sentence bio shown on the homepage. Keep it punchy and first-person.',
+  },
+  {
+    label: 'Long Bio',
+    name: 'longBio',
+    widget: 'markdown',
+    required: false,
+    hint: 'Full biography for the /profile/ page. Can include career history, achievements, etc.',
+  },
+  {
+    label: 'External Profiles (sameAs)',
+    name: 'sameAs',
+    widget: 'list',
+    required: false,
+    hint: 'List of external profile URLs (LinkedIn, Crunchbase, Medium, etc.). Used in the homepage links row and in SEO structured data.',
+    fields: [
+      {
+        label: 'Label',
+        name: 'label',
+        widget: 'string',
+        required: true,
+        hint: 'Display name, e.g. "LinkedIn", "Crunchbase", "Medium"',
+      },
+      {
+        label: 'URL',
+        name: 'url',
+        widget: 'string',
+        required: true,
+        hint: 'Full URL. Must start with "https://".',
+        pattern: ['https://.+', 'Must start with "https://"'],
+      },
+    ],
+  },
+  {
+    label: 'Social Media Links',
+    name: 'socialLinks',
+    widget: 'object',
+    required: false,
+    fields: [
+      socialLink('Twitter'),
+      socialLink('Facebook'),
+      socialLink('LinkedIn'),
+      // socialLink('Pinterest'),
+      // socialLink('Instagram'),
+    ],
+  },
+  // {
+  //   label: 'Theme Customization Options',
+  //   name: 'themeOptions',
+  //   widget: 'object',
+  //   fields: [
+  //     {
+  //       label: 'Color Scheme',
+  //       name: 'colorScheme',
+  //       widget: 'select',
+  //       default: ['londn'],
+  //       hint: 'Select the color scheme for your website',
+  //       options: siteMetadata.colorOptions.map(({ label, value }) => ({
+  //         label,
+  //         value,
+  //       })),
+  //     },
+  //     {
+  //       label: 'Font Scheme',
+  //       name: 'fontScheme',
+  //       widget: 'select',
+  //       default: ['muli'],
+  //       hint: 'Select the font scheme for your website',
+  //       options: siteMetadata.fontOptions.map(({ label, value }) => ({
+  //         label,
+  //         value,
+  //       })),
+  //     },
+  //     {
+  //       label: 'Show Theme Switcher?',
+  //       name: 'showThemeSwitcher',
+  //       widget: 'boolean',
+  //       default: false,
+  //       hint: 'Turn on the theme switcher so you can preview themes on your site. NOTE: This should only be turned on temporarily so you can preview different styles. Turn this off again once you have made your selection.',
+  //     },
+  //   ],
+  // },
+]
+
+const menuDataFields = [
+  {
+    label: 'Template Key',
+    name: 'templateKey',
+    widget: 'hidden',
+    default: 'menu-data',
+  },
+  {
+    label: 'Published',
+    name: 'published',
+    widget: 'hidden',
+    default: false,
+  },
+  {
+    label: 'Menu Items',
+    name: 'menuItems',
+    widget: 'list',
+    fields: [
+      {
+        label: 'Label',
+        name: 'label',
+        widget: 'string',
+        required: true,
+        hint: 'The text you want to appear in the menu, e.g. "Home" or "Profile".',
+      },
+      {
+        label: 'Page URL',
+        name: 'slug',
+        widget: 'relation',
+        collection: 'pages',
+        searchFields: ['pageSlug'],
+        valueField: 'pageSlug',
+        hint: 'The URL of the page you want this menu item to go to.',
+        // displayFields: ['slug', 'label', 'name'],
+      },
+    ],
+  },
+]
+
+export default {
+  name: 'meta',
+  label: 'Site Configuration',
+  files: [
+    {
+      file: 'src/pages/sitedata.md',
+      name: 'siteData',
+      label: 'Site Data',
+      identifier_field: 'templateKey',
+      fields: siteDataFields,
+    },
+    {
+      file: 'src/pages/menudata.md',
+      name: 'menuData',
+      label: 'Navigation Menu',
+      identifier_field: 'templateKey',
+      fields: menuDataFields,
+    },
+  ],
+}
